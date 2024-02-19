@@ -4,6 +4,7 @@ import { IGraph } from "../utils/interfaces/GraphType";
 import 'vis-network/styles/vis-network.css';
 import GraphVisualization from "./GraphVisualization ";
 
+// TODO: add tailwind support so that you can review and revise on mobile
 // TODO: find and solve FE tasks masked as dfs/bfs (this is what is given at interviews)
 export default function Algorithms() {
     const [graph, setGraph] = useState<IGraph>(graphAdjacencyObj);
@@ -32,6 +33,11 @@ export default function Algorithms() {
         });
         bfs(queue, visited);
     };
+
+    // helpers
+    const clearGraph = () => {
+        setGraph({});
+    }
 
     return (
         <div>
