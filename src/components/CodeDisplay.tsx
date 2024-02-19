@@ -8,7 +8,7 @@ const CodeDisplay = ({ func }: any) => {
 
   useEffect(() => {
     parseCode();
-  }, [func]);
+  }, []);
 
   const parseCode = () => {
     try {
