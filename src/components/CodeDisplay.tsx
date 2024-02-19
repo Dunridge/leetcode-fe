@@ -6,10 +6,6 @@ import { parse, Options } from 'acorn';
 const CodeDisplay = ({ func }: any) => {
   const [code, setCode] = useState('');
 
-  useEffect(() => {
-    parseCode();
-  }, []);
-
   const parseCode = () => {
     try {
       const codeString = func.toString();
@@ -21,6 +17,10 @@ const CodeDisplay = ({ func }: any) => {
       console.error('Error parsing code:', error);
     }
   };
+
+  useEffect(() => {
+    parseCode();
+  }, [parseCode]);
 
   return (
     <SyntaxHighlighter language="javascript" style={solarizedlight}>
