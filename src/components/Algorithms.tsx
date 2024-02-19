@@ -3,6 +3,7 @@ import { graphAdjacencyObj } from "../utils/data/graphAdjacencyObj";
 import { IGraph } from "../utils/interfaces/GraphType";
 import 'vis-network/styles/vis-network.css';
 import GraphVisualization from "./GraphVisualization ";
+import CodeDisplay from "./CodeDisplay";
 
 // TODO: add tailwind support so that you can review and revise on mobile
 // TODO: find and solve FE tasks masked as dfs/bfs (this is what is given at interviews)
@@ -45,8 +46,10 @@ export default function Algorithms() {
             <h2>Graph</h2>
             <GraphVisualization adjacencyList={graph} />
             <hr />
+            <CodeDisplay func={dfs}/>
             <button onClick={() => dfs(1)}>DFS</button>
             <hr />
+            <CodeDisplay func={bfs}/>
             <button onClick={() => bfs([1])}>BFS</button>
             <hr />
             <hr />
