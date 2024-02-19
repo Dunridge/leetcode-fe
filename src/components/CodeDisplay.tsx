@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { parse, Options } from 'acorn';
 
 const CodeDisplay = ({ func }: any) => {
   const [code, setCode] = useState('');
+  // TODO: fix the code comming in compiled 
 
   const parseCode = useCallback(() => {
     try {
@@ -19,11 +20,12 @@ const CodeDisplay = ({ func }: any) => {
   }, [func]);
 
   useEffect(() => {
-    parseCode(); // Call parseCode directly inside the useEffect
-  }, [parseCode]); // Include parseCode in the dependency array
+    parseCode(); 
+  }, [parseCode]); 
 
   return (
-    <SyntaxHighlighter language="javascript" style={solarizedlight}>
+    // TODO: fix this to work in the deployed version
+    <SyntaxHighlighter language="javascript" style={atomDark}>
       {code}
     </SyntaxHighlighter>
   );
