@@ -4,6 +4,10 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const CodeDisplay = ({ func }: any) => {
     const [code, setCode] = useState(func);
+
+    const test = (codeText: string) => {
+        setCode(codeText);
+    }
     // TODO: fix the code comming in compiled 
 
     //   const parseCode = useCallback(() => {
