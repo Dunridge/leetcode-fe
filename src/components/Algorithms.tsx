@@ -48,6 +48,9 @@ export default function Algorithms() {
             <button onClick={() => dfs(1)}>DFS</button>
             <hr />
             <button onClick={() => bfs([1])}>BFS</button>
+            <hr />
+            <hr />
+            <button onClick={() => clearGraph()}>Clear Graph</button>
         </div>
     );
 };
