@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { graphAdjacencyObj } from "../utils/data/graphAdjacencyObj";
 import { IGraph } from "../utils/interfaces/GraphType";
+import 'vis-network/styles/vis-network.css';
+import GraphVisualization from "./GraphVisualization ";
 
-const Graph: React.FC = () => {
+export default function Algorithms() {
     const [graph, setGraph] = useState<IGraph>(graphAdjacencyObj);
 
     const bfs = (start: number): void => {
@@ -39,15 +41,13 @@ const Graph: React.FC = () => {
 
     return (
         <div>
-            <h2>BFS in React Functional Component</h2>
+            <h2>Algorithms</h2>
             <h2>Graph</h2>
-            <div>{ JSON.stringify(graphAdjacencyObj) }</div>
-            <hr />
-            <button onClick={() => bfs(1)}>BFS, Node 1</button>
+            <GraphVisualization adjacencyList={graph}/>
             <hr />
             <button onClick={() => dfs(1)}>DFS, Node 1</button>
+            <hr />
+            <button onClick={() => bfs(1)}>BFS, Node 1</button>
         </div>
     );
 };
-
-export default Graph;

@@ -1,10 +1,10 @@
-import Graph from "./components/Graph";
+import Algorithms from "./components/Algorithms";
 
 function App() {
 
   return (
     <div className="app">
-      <Graph/>
+      <Algorithms/>
     </div>
   );
 }
