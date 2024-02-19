@@ -17,7 +17,7 @@ export default function Algorithms() {
         visited.add(node);
         graph[node]?.forEach(neighbor => dfs(neighbor, visited));
         // TODO: get rid of the bug where it's called three times (so that you can translate it to problems)
-        visited.size === Object.keys(graph).length && console.log('dfs: ', visited); 
+        visited.size === Object.keys(graph).length && console.log('dfs: ', visited);
     }
 
     // TODO: get rid of the initial queue arr and replace with the node number
@@ -46,10 +46,35 @@ export default function Algorithms() {
             <h2>Graph</h2>
             <GraphVisualization adjacencyList={graph} />
             <hr />
-            <CodeDisplay func={dfs}/>
+            <CodeDisplay func={
+                `
+const dfs = (node: number, visited: Set<number> = new Set()): any => {
+    if (visited.has(node)) return;
+    visited.add(node);
+    graph[node]?.forEach(neighbor => dfs(neighbor, visited));
+    visited.size === Object.keys(graph).length && console.log('dfs: ', visited); 
+}
+                `
+            } />
             <button onClick={() => dfs(1)}>DFS</button>
             <hr />
-            <CodeDisplay func={bfs}/>
+            <CodeDisplay func={
+                 `
+const bfs = (queue: number[], visited: Set<number> = new Set()): void => {
+    if (queue.length === 0) {
+        console.log('bfs: ', visited);
+        return;
+    };
+    const current = queue.shift()!;
+    graph[current]?.forEach(neighbor => {
+        if (visited.has(neighbor)) return;
+        visited.add(neighbor);
+        queue.push(neighbor);
+        });
+    bfs(queue, visited);
+ };
+                `
+            } />
             <button onClick={() => bfs([1])}>BFS</button>
             <hr />
             <hr />
