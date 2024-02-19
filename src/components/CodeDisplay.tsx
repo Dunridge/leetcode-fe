@@ -28,9 +28,13 @@ const CodeDisplay = ({ func }: any) => {
 
     return (
         // TODO: fix this to work in the deployed version
-        <SyntaxHighlighter language="javascript" style={atomDark}>
-            {code}
-        </SyntaxHighlighter>
+        <>
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+                {code}
+            </SyntaxHighlighter>
+
+            <button style={{ display: 'none' }} onClick={() => test('test')}></button>
+        </>
     );
 };
 
