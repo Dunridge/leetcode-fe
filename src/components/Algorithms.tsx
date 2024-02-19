@@ -7,6 +7,14 @@ import GraphVisualization from "./GraphVisualization ";
 export default function Algorithms() {
     const [graph, setGraph] = useState<IGraph>(graphAdjacencyObj);
 
+    const dfs = (node: number, visited: Set<number> = new Set()): void => {
+        if (visited.has(node)) return;
+        visited.add(node);
+        console.log(node);
+        if(!graph[node]) return;
+        graph[node]?.forEach(neighbor => dfs(neighbor, visited));
+    }
+
     const bfs = (start: number): void => {
         const queue: number[] = [start];
         const visited: Set<number> = new Set([start]);
@@ -21,19 +29,6 @@ export default function Algorithms() {
                         visited.add(neighbor);
                         queue.push(neighbor);
                     }
-                }
-            }
-        }
-    };
-
-    const dfs = (start: number, visited: Set<number> = new Set()): void => {
-        if (!visited.has(start)) {
-            console.log(start);
-            visited.add(start);
-
-            if (graph[start]) {
-                for (const neighbor of graph[start]) {
-                    dfs(neighbor, visited);
                 }
             }
         }
